@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Presentes — Bea's Birthday</title>
+  <meta name="description" content="Sugestões de presentes e lista de livros da Bea." />
+  <meta name="theme-color" content="#bb949d" />
+  <style>
+    :root {
+      --bg: #bb949d;
+      --wine: #8f3b4c;
+      --wine-dark: #703141;
+      --ink: #3a2d31;
+      --paper: rgba(255,248,244,.78);
+      --paper-strong: #fff8f4;
+      --shadow: rgba(61,34,42,.16);
+      --accent: #de6671;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Courier New", Courier, monospace;
+      background-color: var(--bg);
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='78' height='78' viewBox='0 0 78 78'%3E%3Cg fill='none' stroke='rgba(224,92,103,0.82)' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' transform='translate(39 39) rotate(-14)'%3E%3Cpath d='M0 0 C-8 -7 -14 -6 -16 -1 C-18 5 -10 6 0 0Z'/%3E%3Cpath d='M0 0 C8 -7 14 -6 16 -1 C18 5 10 6 0 0Z'/%3E%3Cpath d='M0 -2 v7'/%3E%3Cpath d='M-2 4 C-5 9 -9 10 -12 9'/%3E%3Cpath d='M2 4 C5 9 9 10 12 9'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: 78px 78px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 16% 10%, rgba(255,255,255,.18), transparent 24%),
+        radial-gradient(circle at 85% 14%, rgba(143,59,76,.10), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(82,42,50,.10));
+    }
+
+    a { color: inherit; }
+
+    .page {
+      width: min(940px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 28px 0 42px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .back-link, .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 11px 16px;
+      border-radius: 999px;
+      background: rgba(255,248,244,.78);
+      border: 1px solid rgba(255,255,255,.65);
+      text-decoration: none;
+      font-weight: 800;
+      box-shadow: 0 10px 24px rgba(61,34,42,.12);
+    }
+
+    .pill-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    header {
+      text-align: center;
+      margin: 6px 0 28px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--wine);
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      font-size: clamp(2.7rem, 7vw, 5.2rem);
+      line-height: .92;
+      letter-spacing: .02em;
+    }
+
+    .subtitle {
+      max-width: 660px;
+      margin: 14px auto 0;
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .gift-list {
+      display: grid;
+      gap: 26px;
+      margin-top: 24px;
+    }
+
+    .gift-item {
+      display: grid;
+      grid-template-columns: 124px 1fr;
+      align-items: center;
+      gap: 24px;
+      padding: 18px 20px;
+      text-decoration: none;
+      background: rgba(255,248,244,.18);
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,.22);
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+
+    .gift-item:hover {
+      transform: translateY(-2px);
+      background: rgba(255,248,244,.26);
+      box-shadow: 0 16px 34px rgba(61,34,42,.12);
+    }
+
+    .bubble {
+      width: 124px;
+      height: 124px;
+      border-radius: 50%;
+      background: var(--paper-strong);
+      border: 8px solid rgba(255,255,255,.45);
+      box-shadow: 0 16px 26px rgba(61,34,42,.13);
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .bubble::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--grad, linear-gradient(135deg, rgba(143,59,76,.16), rgba(255,255,255,.9)));
+      z-index: -1;
+    }
+
+    .bubble span {
+      font-size: 2.5rem;
+      filter: drop-shadow(0 4px 10px rgba(61,34,42,.18));
+    }
+
+    .gift-copy h2 {
+      margin: 0;
+      color: var(--wine-dark);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.05rem, 5vw, 3.2rem);
+      font-weight: 500;
+      line-height: .94;
+    }
+
+    .gift-copy p {
+      margin: 10px 0 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: .98rem;
+      line-height: 1.4;
+      font-weight: 700;
+      max-width: 560px;
+    }
+
+    .gift-copy small {
+      display: inline-block;
+      margin-top: 6px;
+      color: var(--wine-dark);
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-family: "Courier New", Courier, monospace;
+    }
+
+    .cta-box {
+      margin-top: 34px;
+      padding: 20px;
+      border-radius: 28px;
+      background: var(--paper);
+      border: 1px solid rgba(255,255,255,.7);
+      box-shadow: 0 18px 42px rgba(61,34,42,.12);
+      text-align: center;
+    }
+
+    .cta-box h3 {
+      margin: 0 0 10px;
+      color: var(--wine-dark);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 500;
+    }
+
+    .cta-box p {
+      margin: 0 auto 16px;
+      max-width: 560px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cta-buttons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 13px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.75);
+      background: var(--paper-strong);
+      color: var(--wine-dark);
+      text-decoration: none;
+      font-weight: 900;
+      box-shadow: 0 12px 28px rgba(61,34,42,.10);
+    }
+
+    footer {
+      text-align: center;
+      padding-top: 22px;
+      font-size: .82rem;
+      color: rgba(47,38,41,.78);
+      font-weight: 800;
+    }
+
+    @media (max-width: 700px) {
+      .page { width: min(100% - 18px, 620px); }
+      .topbar { justify-content: center; }
+      .gift-item { grid-template-columns: 1fr; text-align: center; gap: 14px; }
+      .bubble { margin: 0 auto; }
+      .gift-copy p { margin-left: auto; margin-right: auto; }
+      .cta-buttons a, .pill, .back-link { width: 100%; }
+      .pill-group { width: 100%; }
+      .topbar .pill-group { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a class="back-link" href="index.html">← Voltar ao convite</a>
+      <div class="pill-group">
+        <a class="pill" href="https://www.canva.com/design/DAHIs5nhsT8/apxTB1h5SNSPYlcGkX6sSw/view?utm_content=DAHIs5nhsT8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hd9ffad9b9d#2" target="_blank" rel="noopener">Abrir lista de presentes</a>
+        <a class="pill" href="https://www.canva.com/design/DAHI29AhU_I/GyGzN0eC6x-FeUvKnW9dYg/view?utm_content=DAHI29AhU_I&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h73a8908d93#1" target="_blank" rel="noopener">Abrir lista de livros</a>
+      </div>
+    </div>
+
+    <header>
+      <h1>Sugestões de presentes</h1>
+      <p class="subtitle">
+        Separei aqui algumas ideias de presentes. Os cards levam para a lista correspondente,
+        e a seção de livros abre a lista de livros sugeridos.
+      </p>
+    </header>
+
+    <section class="gift-list" aria-label="Ideias de presentes">
+      <a class="gift-item" href="https://www.canva.com/design/DAHIs5nhsT8/apxTB1h5SNSPYlcGkX6sSw/view?utm_content=DAHIs5nhsT8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hd9ffad9b9d#2" target="_blank" rel="noopener">
+        <div class="bubble" style="--grad: linear-gradient(135deg, rgba(190,153,117,.46), rgba(255,255,255,.94));"><span>👗</span></div>
+        <div class="gift-copy">
+          <h2>Tamanho M<br />Sandália 36/37</h2>
+          <p>Roupas e calçados dentro dessas referências são ótimas opções.</p>
+          <small>Clique para abrir a lista de presentes</small>
+        </div>
+      </a>
+
+      <a class="gift-item" href="https://www.canva.com/design/DAHIs5nhsT8/apxTB1h5SNSPYlcGkX6sSw/view?utm_content=DAHIs5nhsT8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hd9ffad9b9d#2" target="_blank" rel="noopener">
+        <div class="bubble" style="--grad: linear-gradient(135deg, rgba(205,176,124,.55), rgba(255,255,255,.94));"><span>💍</span></div>
+        <div class="gift-copy">
+          <h2>Acessórios</h2>
+          <p>Brincos, colares, pulseiras e outros detalhes delicados são super bem-vindos.</p>
+          <small>Clique para abrir a lista de presentes</small>
+        </div>
+      </a>
+
+      <a class="gift-item" href="https://www.canva.com/design/DAHI29AhU_I/GyGzN0eC6x-FeUvKnW9dYg/view?utm_content=DAHI29AhU_I&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h73a8908d93#1" target="_blank" rel="noopener">
+        <div class="bubble" style="--grad: linear-gradient(135deg, rgba(209,194,160,.62), rgba(255,255,255,.95));"><span>📚</span></div>
+        <div class="gift-copy">
+          <h2>Livros</h2>
+          <p>Tenho uma lista separada com sugestões de livros.</p>
+          <small>Tenho uma lista aqui — faça uma dedicatória bonita</small>
+        </div>
+      </a>
+
+      <a class="gift-item" href="https://www.canva.com/design/DAHIs5nhsT8/apxTB1h5SNSPYlcGkX6sSw/view?utm_content=DAHIs5nhsT8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hd9ffad9b9d#2" target="_blank" rel="noopener">
+        <div class="bubble" style="--grad: linear-gradient(135deg, rgba(140,157,184,.56), rgba(255,255,255,.94));"><span>🧴</span></div>
+        <div class="gift-copy">
+          <h2>Hidratantes / perfumes /<br />maquiagens</h2>
+          <p>Itens de autocuidado e beleza também entram nas minhas sugestões favoritas.</p>
+          <small>Clique para abrir a lista de presentes</small>
+        </div>
+      </a>
+
+      <a class="gift-item" href="https://www.canva.com/design/DAHIs5nhsT8/apxTB1h5SNSPYlcGkX6sSw/view?utm_content=DAHIs5nhsT8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hd9ffad9b9d#2" target="_blank" rel="noopener">
+        <div class="bubble" style="--grad: linear-gradient(135deg, rgba(214,180,175,.58), rgba(255,255,255,.94));"><span>💌</span></div>
+        <div class="gift-copy">
+          <h2>Presentes afetivos</h2>
+          <p>Esses daqui ficam guardados no coração — cartinhas, lembranças e gestos especiais sempre valem muito.</p>
+          <small>Clique para abrir a lista de presentes</small>
+        </div>
+      </a>
+    </section>
+
+    <section class="cta-box">
+      <h3>Links rápidos</h3>
+      <p>
+        Se preferir, você também pode abrir diretamente a lista geral de presentes ou a lista de livros.
+      </p>
+      <div class="cta-buttons">
+        <a href="https://www.canva.com/design/DAHIs5nhsT8/apxTB1h5SNSPYlcGkX6sSw/view?utm_content=DAHIs5nhsT8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hd9ffad9b9d#2" target="_blank" rel="noopener">Lista de presentes</a>
+        <a href="https://www.canva.com/design/DAHI29AhU_I/GyGzN0eC6x-FeUvKnW9dYg/view?utm_content=DAHI29AhU_I&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h73a8908d93#1" target="_blank" rel="noopener">Lista de livros</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Roxy%2C%20Avenida%20Senador%20Lemos%2C%20231%2C%20Umarizal" target="_blank" rel="noopener">Abrir localização da festa</a>
+      </div>
+    </section>
+
+    <footer>
+      Bea's Birthday · Season 31 Episode 1
+    </footer>
+  </main>
+</body>
+</html>
